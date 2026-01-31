@@ -1,8 +1,8 @@
 # Portfolio Part 1: Component Brainstorming
 
-- **Name**: <!-- TODO: fill with first and last name (e.g., Brutus Buckeye) then delete this comment -->
-- **Dot Number**: <!-- TODO: fill with OSU dot number (e.g., buckeye.17) then delete this comment -->
-- **Due Date**: <!-- TODO: fill with due date and time (e.g., 10/17 @ 3:10 PM EST) then delete this comment -->
+- **Name**: Thomas Dyer
+- **Dot Number**: dyer.449
+- **Due Date**: 2/6 @ 1:50 PM
 
 ## Assignment Overview
 
@@ -106,11 +106,10 @@ Below is further rationale/explanation for the rubric items above:
 > brainstorming. Plus it helps us get to know you better! Feel free to share
 > images in this section.
 
-<!-- TODO: briefly talk about your interests then delete this comment.
-Also, protip: you can preview what your response looks like by hitting
-the magnifying glass icon in the upper-right corner or pressing CTRL+K and
-then V. This kind of button combination is called a chord, for whatever
-reason -->
+I am into web dev and plan or pursuing a career in the field. Outside of school
+and future career paths, I am really into sports (specifically basketball,
+football, golf, track and field), personal fitness (lifting weights, playing
+sports, nutrition), and making money.
 
 ## Assignment
 
@@ -211,17 +210,56 @@ will likely refine your design to make your implementation easier to use.
 
 > Please use this section to share your designs.
 
-- Component Design #1: <!-- TODO: give component a name then delete this comment -->
+- Component Design #1: `TaskManager`
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - Keeps track of things you need to do, priorities, deadlines, and completion
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - `void addTask(Task t)` - adds `t` to `this`
+    - `Task removeTask(String s)` - removes a task named `s` from `this` and
+    returns the task
+    - `void updateTask(String s)` - changes a charateristic of a task named `s`
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - `void setCategory(String n, String c)` - sets the category of task `n` to `s`
+    - `void getTasks()` - prints the all tasks and their completed status
+    - `void getTasks(String s)` - prints all tasks with category `s`
+    - `void getToDo()` - prints all tasks whose status is incomplete
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
+      - This component will be mutable because tasks will need to be added, removed,
+       and modified after the manager is created.
+    - Would this component rely on any internal classes (e.g., `Map.Pair`)?
+      Answer and explain:
       - <!-- TODO: provide an argument then delete this comment -->
+    - Would this component need any enums or constants (e.g.,
+      `Program.Instruction`)? Answer and explain:
+      - <!-- TODO: provide an argument then delete this comment -->
+    - Can you implement your secondary methods using your kernel methods?
+      Answer, explain, and give at least one example:
+      - I think I can implement the secondary methods using the kernel methods
+      because I can use updateTask for setCategory and I can iterate through `this`
+      for the rest.
+
+- Component Design #2: `NutritionTracker`
+  - **Description**:
+    - Keeps track of calories intake, macronutrient intake, and other dietary info
+  - **Kernel Methods**:
+    - `void enterFood(Food f)` - adds `f` to `this`
+    - `Food removeFood(String s)` - removes food named `s` from `this` and returns
+    the food
+    - `void resetDay()` - clears all food for the current day
+  - **Secondary Methods**:
+    - `int getCaloriesToday()` - reports the calories from logged foods on current day
+    - `Sequence<Integer> getDailyAverage()` - reports the values of average amounts
+    of fat, carbohydrates, protein, and calories in `this`
+    - `Sequence<Integer> getDailyMedian()` - reports the values of median amounts
+    of fat, carbohydrates, protein, and calories in `this`
+    - `void setCalorieGoal(int g)` - sets the calorie goal to `g`
+  - **Additional Considerations** (*note*: "I don't know" is an acceptable
+    answer for each of the following questions):
+    - Would this component be mutable? Answer and explain:
+      - This component would be mutable because the values for the calories and
+      macronutrients would need to change after the tracker is created.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
       - <!-- TODO: provide an argument then delete this comment -->
@@ -232,34 +270,21 @@ will likely refine your design to make your implementation easier to use.
       Answer, explain, and give at least one example:
       - <!-- TODO: provide an argument then delete this comment -->
 
-- Component Design #2: <!-- TODO: give component a name then delete this comment -->
+- Component Design #3: `BudgetManager`
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - Calcuates budgets, keeps track of income, expenses, and saving
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - `void addIncome(String n, double v)` - adds an income stream named `n` of amount
+    `v` to `this`
+    - `void addExpense(String n, double v)` - adds an expense named `n` of amount
+    `v` to `this`
+    - `Map.Pair<String, Double> removeTransaction(String s)` - removes a transaction
+    named `s` from `this` and returns its name and value
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
-  - **Additional Considerations** (*note*: "I don't know" is an acceptable
-    answer for each of the following questions):
-    - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
-    - Would this component rely on any internal classes (e.g., `Map.Pair`)?
-      Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
-    - Would this component need any enums or constants (e.g.,
-      `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
-    - Can you implement your secondary methods using your kernel methods?
-      Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
-
-- Component Design #3: <!-- TODO: give component a name then delete this comment -->
-  - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
-  - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
-  - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - double getSpendingBudget
+    - void setSavingGoal
+    - double getMonthlySpending
+    - double getMonthlyNetIncome
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
