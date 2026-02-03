@@ -216,7 +216,7 @@ will likely refine your design to make your implementation easier to use.
        and modified after the manager is created.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - I'm not sure
+      - I would create a `Task` class, `this` will be a `Sequence` containing `Task`s
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
       - I'm not sure
@@ -236,9 +236,9 @@ will likely refine your design to make your implementation easier to use.
     - `void resetDay()` - clears all food for the current day
   - **Secondary Methods**:
     - `int getCaloriesToday()` - reports the calories from logged foods on current day
-    - `Sequence<Integer> getDailyAverage()` - reports the values of average amounts
+    - `Food getDailyAverage()` - reports the values of average amounts
     of fat, carbohydrates, protein, and calories in `this`
-    - `Sequence<Integer> getDailyMedian()` - reports the values of median amounts
+    - `Food getDailyMedian()` - reports the values of median amounts
     of fat, carbohydrates, protein, and calories in `this`
     - `void setCalorieGoal(int g)` - sets the calorie goal to `g`
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
@@ -248,13 +248,15 @@ will likely refine your design to make your implementation easier to use.
       macronutrients would need to change after the tracker is created.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - I'm not sure
+      - I would create a `Food` class, `this` would be a of `Food`s
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
       - I'm not sure
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - I think the secondary methods could be implemented without using the kernel
+      methods or any other methods, since I will either be creating a `Food`
+      to return or just getting stored values.
 
 - Component Design #3: `BudgetManager`
   - **Description**:
