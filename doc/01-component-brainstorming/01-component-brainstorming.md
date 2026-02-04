@@ -198,7 +198,11 @@ will likely refine your design to make your implementation easier to use.
 
 - Component Design #1: `TaskManager`
   - **Description**:
-    - Keeps track of things you need to do, priorities, deadlines, and completion
+    - The purpose of this component is to model a to-do list. This component
+    will allow the users to add and remove things they need to do, have them
+    organized using the deadlines and their completion statuses. The kernel
+    provides the basic operations, and the methods in the secondary interface
+    allow the user to make more changes and see their tasks.
   - **Kernel Methods**:
     - `void addTask(Task t)` - adds `t` to `this`
     - `Task removeTask(String s)` - removes a task named `s` from `this` and
@@ -228,7 +232,12 @@ will likely refine your design to make your implementation easier to use.
 
 - Component Design #2: `NutritionTracker`
   - **Description**:
-    - Keeps track of calories intake, macronutrient intake, and other dietary info
+    - The purpose of this component is to model a calorie counter that keeps
+    track of the amount of calories and macronutrients eaten by the user. This
+    component will allow the users to add and remove the foods they eat, see
+    the history, and set goals. The kernel provides the basic methods to input
+    the info, and the methods in the secondary interface allow the users to see
+    the past and set goals.
   - **Kernel Methods**:
     - `void enterFood(Food f)` - adds `f` to `this`
     - `Food removeFood(String s)` - removes food named `s` from `this` and reports
@@ -259,20 +268,25 @@ will likely refine your design to make your implementation easier to use.
       to return or just getting stored values.
 
 - Component Design #3: `BudgetManager`
-  - **Description**:
-    - Calcuates budgets, keeps track of income, expenses, and saving
+
+  - **Description**
+    -
+
   - **Kernel Methods**:
     - `void addIncome(String n, double v)` - adds an income stream named `n` of amount
     `v` to `this`
     - `void addExpense(String n, double v)` - adds an expense named `n` of amount
     `v` to `this`
     - `Map.Pair<String, Double> removeTransaction(String s)` - removes a transaction
-    named `s` from `this` and returns its name and value
+    named `s` from `this` and reports the name and value of the transaction
   - **Secondary Methods**:
-    - double getSpendingBudget
-    - void setSavingGoal
-    - double getMonthlySpending
-    - double getMonthlyNetIncome
+    - `double getSpendingBudget()` - reports the amount that can be spent after
+    income, expenses, and saving
+    - `void setSavingGoal(double s)` - sets the amount that the client wants to
+    save
+    - `double getMonthlySpending()` - reports the total of all expenses in `this`
+    - `double getMonthlyNetIncome()` - reports the amount of money after expenses
+    are subtracted from income
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
@@ -286,7 +300,9 @@ will likely refine your design to make your implementation easier to use.
       - I'm not sure
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - I think the secondary methods can be implemented without using the kernel
+      methods or other methods, since I will either be returning a value already
+      in `this` or setting a value
 
 ## Post-Assignment
 
