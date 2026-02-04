@@ -270,8 +270,11 @@ will likely refine your design to make your implementation easier to use.
 - Component Design #3: `BudgetManager`
 
   - **Description**
-    -
-
+    - The purpose of this component is to model a financial manager. This
+    component will allow the users to get their budget given their income and
+    expenses, and set goals. The kernel provides the methods to add or remove
+    streams of income or expenses, and the methods in the secondary interface
+    allow the user to see their budgeting info and set goals.
   - **Kernel Methods**:
     - `void addIncome(String n, double v)` - adds an income stream named `n` of amount
     `v` to `this`
