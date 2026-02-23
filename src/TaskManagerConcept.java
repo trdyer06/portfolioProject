@@ -8,10 +8,23 @@ public class TaskManagerConcept {
         this.tasks = new Sequence1L<String>();
     }
 
+    /**
+     * adds Task t to the end of this.
+     *
+     * @param t
+     *            the Task to be added
+     */
     public void addTask(String t) {
         this.tasks.add(this.tasks.length(), t);
     }
 
+    /**
+     * Removes Task t from this.
+     *
+     * @param t
+     *            the Task to be removed
+     * @return the removed Task
+     */
     public String removeTask(String t) {
         Sequence<String> temp = this.tasks.newInstance();
         int index = 0;
@@ -41,7 +54,28 @@ public class TaskManagerConcept {
         return removed;
     }
 
+    /**
+     * Replaces the title of Task t with r.
+     *
+     * @param t
+     *            the Task whose title will be changed
+     * @param r
+     *            the new title of t
+     */
     public void updateTask(String t, String r) {
-
+        int index = 0;
+        int i = 0;
+        /*
+         * find the index of the Task to be updated
+         */
+        while (i < this.tasks.length()) {
+            if (this.tasks.entry(i).equals(t)) {
+                index = i;
+            }
+        }
+        /*
+         * replace the Task with the r
+         */
+        this.tasks.replaceEntry(index, r);
     }
 }
