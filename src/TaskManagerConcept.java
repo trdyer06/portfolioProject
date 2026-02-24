@@ -78,4 +78,22 @@ public class TaskManagerConcept {
          */
         this.tasks.replaceEntry(index, r);
     }
+
+    /**
+     * Main method.
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        TaskManagerConcept manager = new TaskManagerConcept();
+        manager.addTask("Software Homework");
+        manager.addTask("Foundations Homework");
+        manager.addTask("Workout");
+        manager.addTask("Zoom Meeting");
+        for (String s : manager) {
+
+        }
+        manager.updateTask("Software Homework", "Stats Homework");
+
+    }
 }
