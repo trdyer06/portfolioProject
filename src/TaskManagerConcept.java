@@ -1,7 +1,13 @@
+import java.util.Iterator;
+
 import components.sequence.Sequence;
 import components.sequence.Sequence1L;
+import components.simplereader.SimpleReader;
+import components.simplereader.SimpleReader1L;
+import components.simplewriter.SimpleWriter;
+import components.simplewriter.SimpleWriter1L;
 
-public class TaskManagerConcept {
+public class TaskManagerConcept implements Iterable<String> {
     private Sequence<String> tasks;
 
     public TaskManagerConcept() {
@@ -80,20 +86,56 @@ public class TaskManagerConcept {
     }
 
     /**
+     * Reports the number of elements in this.
+     *
+     * @return the length of this
+     */
+    public int length() {
+        return this.tasks.length();
+    }
+
+    /**
      * Main method.
      *
      * @param args
      */
     public static void main(String[] args) {
         TaskManagerConcept manager = new TaskManagerConcept();
-        manager.addTask("Software Homework");
-        manager.addTask("Foundations Homework");
-        manager.addTask("Workout");
-        manager.addTask("Zoom Meeting");
-        for (String s : manager) {
-
+        SimpleWriter out = new SimpleWriter1L();
+        SimpleReader in = new SimpleReader1L();
+        out.println("Add Task (a)\nRemove Task (r)\nUpdate Task (u)");
+        String input = in.nextLine();
+        while (!(input.equals("a") && input.equals("b") && input.equals("c"))) {
+            String name = "";
+            if (input.equals("a")) {
+                out.print("Enter task name: ");
+                name = in.nextLine();
+                manager.addTask(name);
+            } else if (input.equals("b")) {
+                out.print("Name of task being removed: ");
+                name = in.nextLine();
+                manager.removeTask(name);
+            } else {
+                out.print("Name of task being updated: ");
+                name = in.nextLine();
+                out.print("Enter new task name: ");
+                String replace = in.nextLine();
+                manager.updateTask(name, replace);
+            }
+            for (String s : manager) {
+                out.print(s + ", ");
+            }
+            out.println("Length: " + manager.length());
+            out.println();
+            out.println("Add Task (a)\nRemove Task (r)\nUpdate Task (u)");
+            input = in.nextLine();
         }
-        manager.updateTask("Software Homework", "Stats Homework");
+    }
 
+    @Override
+    public Iterator<String> iterator() {
+        Sequence<String> copy = this.tasks.newInstance();
+        copy.transferFrom(this.tasks);
+        return copy.iterator();
     }
 }
