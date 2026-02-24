@@ -10,8 +10,18 @@ import components.simplewriter.SimpleWriter1L;
 public class TaskManagerConcept implements Iterable<String> {
     private Sequence<String> tasks;
 
-    public TaskManagerConcept() {
+    /**
+     * Creator of initial representation.
+     */
+    private void createNewRep() {
         this.tasks = new Sequence1L<String>();
+    }
+
+    /**
+     * No-argument constructor.
+     */
+    public TaskManagerConcept() {
+        this.createNewRep();
     }
 
     /**
@@ -32,7 +42,6 @@ public class TaskManagerConcept implements Iterable<String> {
      * @return the removed Task
      */
     public String removeTask(String t) {
-        Sequence<String> temp = this.tasks.newInstance();
         int index = 0;
         int i = 0;
         /*
@@ -42,22 +51,12 @@ public class TaskManagerConcept implements Iterable<String> {
             if (this.tasks.entry(i).equals(t)) {
                 index = i;
             }
-            temp.add(temp.length(), this.tasks.remove(i));
             i++;
         }
         /*
          * remove the Task
          */
-        String removed = temp.remove(index);
-        i = 0;
-        /*
-         * restore this
-         */
-        while (i < temp.length()) {
-            this.tasks.add(this.tasks.length(), temp.remove(i));
-            i++;
-        }
-        return removed;
+        return this.tasks.remove(index);
     }
 
     /**
@@ -78,6 +77,7 @@ public class TaskManagerConcept implements Iterable<String> {
             if (this.tasks.entry(i).equals(t)) {
                 index = i;
             }
+            i++;
         }
         /*
          * replace the Task with the r
@@ -94,6 +94,11 @@ public class TaskManagerConcept implements Iterable<String> {
         return this.tasks.length();
     }
 
+    @Override
+    public Iterator<String> iterator() {
+        return this.tasks.iterator();
+    }
+
     /**
      * Main method.
      *
@@ -105,13 +110,13 @@ public class TaskManagerConcept implements Iterable<String> {
         SimpleReader in = new SimpleReader1L();
         out.println("Add Task (a)\nRemove Task (r)\nUpdate Task (u)");
         String input = in.nextLine();
-        while (!(input.equals("a") && input.equals("b") && input.equals("c"))) {
+        while (input.equals("a") || input.equals("r") || input.equals("u")) {
             String name = "";
             if (input.equals("a")) {
                 out.print("Enter task name: ");
                 name = in.nextLine();
                 manager.addTask(name);
-            } else if (input.equals("b")) {
+            } else if (input.equals("r")) {
                 out.print("Name of task being removed: ");
                 name = in.nextLine();
                 manager.removeTask(name);
@@ -130,12 +135,10 @@ public class TaskManagerConcept implements Iterable<String> {
             out.println("Add Task (a)\nRemove Task (r)\nUpdate Task (u)");
             input = in.nextLine();
         }
-    }
-
-    @Override
-    public Iterator<String> iterator() {
-        Sequence<String> copy = this.tasks.newInstance();
-        copy.transferFrom(this.tasks);
-        return copy.iterator();
+        out.println("Final Task Manager");
+        for (String s : manager) {
+            out.print(s + ", ");
+        }
+        out.println("Length: " + manager.length());
     }
 }
