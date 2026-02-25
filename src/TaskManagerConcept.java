@@ -72,7 +72,7 @@ public class TaskManagerConcept implements Iterable<Task> {
          * find the index of the Task to be updated
          */
         while (i < this.tasks.length()) {
-            if (this.tasks.entry(i).equals(t)) {
+            if (this.tasks.entry(i).getName().equals(t)) {
                 index = i;
             }
             i++;
@@ -116,14 +116,31 @@ public class TaskManagerConcept implements Iterable<Task> {
             String name = "";
             String date = "";
             String category = "";
+            String status = "";
             if (input.equals("a")) {
+                Task task = new Task();
                 out.print("Enter task name: ");
                 name = in.nextLine();
-                out.print("Enter task date: ");
+                if (!name.equals("")) {
+                    task.setName(name);
+                }
+                out.print("Enter task date (mm/dd/yy): ");
                 date = in.nextLine();
+                if (!date.equals("")) {
+                    task.setDate(date);
+                }
                 out.print("Enter task category: ");
                 category = in.nextLine();
-                manager.addTask(new Task(name, date, category));
+                if (!category.equals("")) {
+                    task.setCategory(category);
+                }
+                out.print(
+                        "Enter task completion status(incomplete, in progress, complete): ");
+                status = in.nextLine();
+                if (!status.equals("")) {
+                    task.setStatus(status);
+                }
+                manager.addTask(task);
             } else if (input.equals("r")) {
                 out.print("Name of task being removed: ");
                 name = in.nextLine();
@@ -138,7 +155,7 @@ public class TaskManagerConcept implements Iterable<Task> {
             for (Task t : manager) {
                 out.print(t + "; ");
             }
-            out.println("Length: " + manager.length());
+            out.println("Number of Tasks: " + manager.length());
             out.println();
             out.println("Add Task (a)\nRemove Task (r)\nUpdate Task (u)");
             input = in.nextLine();
