@@ -7,14 +7,14 @@ import components.simplereader.SimpleReader1L;
 import components.simplewriter.SimpleWriter;
 import components.simplewriter.SimpleWriter1L;
 
-public class TaskManagerConcept implements Iterable<String> {
-    private Sequence<String> tasks;
+public class TaskManagerConcept implements Iterable<Task> {
+    private Sequence<Task> tasks;
 
     /**
      * Creator of initial representation.
      */
     private void createNewRep() {
-        this.tasks = new Sequence1L<String>();
+        this.tasks = new Sequence1L<Task>();
     }
 
     /**
@@ -30,7 +30,7 @@ public class TaskManagerConcept implements Iterable<String> {
      * @param t
      *            the Task to be added
      */
-    public void addTask(String t) {
+    public void addTask(Task t) {
         this.tasks.add(this.tasks.length(), t);
     }
 
@@ -41,22 +41,20 @@ public class TaskManagerConcept implements Iterable<String> {
      *            the Task to be removed
      * @return the removed Task
      */
-    public String removeTask(String t) {
-        int index = 0;
+    public Task removeTask(String t) {
+        Task removed = new Task();
         int i = 0;
         /*
          * find the index of the Task to be removed
          */
         while (i < this.tasks.length()) {
-            if (this.tasks.entry(i).equals(t)) {
-                index = i;
+            String name = this.tasks.entry(i).getName();
+            if (name.equals(t)) {
+                removed = this.tasks.remove(i);
             }
             i++;
         }
-        /*
-         * remove the Task
-         */
-        return this.tasks.remove(index);
+        return removed;
     }
 
     /**
@@ -68,7 +66,7 @@ public class TaskManagerConcept implements Iterable<String> {
      *            the new title of t
      */
     public void updateTask(String t, String r) {
-        int index = 0;
+        int index = -1;
         int i = 0;
         /*
          * find the index of the Task to be updated
@@ -82,7 +80,11 @@ public class TaskManagerConcept implements Iterable<String> {
         /*
          * replace the Task with the r
          */
-        this.tasks.replaceEntry(index, r);
+        if (index >= 0) {
+            Task task = this.tasks.remove(index);
+            task.setName(r);
+            this.tasks.add(index, task);
+        }
     }
 
     /**
@@ -95,7 +97,7 @@ public class TaskManagerConcept implements Iterable<String> {
     }
 
     @Override
-    public Iterator<String> iterator() {
+    public Iterator<Task> iterator() {
         return this.tasks.iterator();
     }
 
@@ -112,10 +114,16 @@ public class TaskManagerConcept implements Iterable<String> {
         String input = in.nextLine();
         while (input.equals("a") || input.equals("r") || input.equals("u")) {
             String name = "";
+            String date = "";
+            String category = "";
             if (input.equals("a")) {
                 out.print("Enter task name: ");
                 name = in.nextLine();
-                manager.addTask(name);
+                out.print("Enter task date: ");
+                date = in.nextLine();
+                out.print("Enter task category: ");
+                category = in.nextLine();
+                manager.addTask(new Task(name, date, category));
             } else if (input.equals("r")) {
                 out.print("Name of task being removed: ");
                 name = in.nextLine();
@@ -127,8 +135,8 @@ public class TaskManagerConcept implements Iterable<String> {
                 String replace = in.nextLine();
                 manager.updateTask(name, replace);
             }
-            for (String s : manager) {
-                out.print(s + ", ");
+            for (Task t : manager) {
+                out.print(t + "; ");
             }
             out.println("Length: " + manager.length());
             out.println();
@@ -136,9 +144,11 @@ public class TaskManagerConcept implements Iterable<String> {
             input = in.nextLine();
         }
         out.println("Final Task Manager");
-        for (String s : manager) {
-            out.print(s + ", ");
+        for (Task t : manager) {
+            out.print(t + "; ");
         }
         out.println("Length: " + manager.length());
+        out.close();
+        in.close();
     }
 }
