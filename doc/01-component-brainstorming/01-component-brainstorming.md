@@ -205,14 +205,21 @@ will likely refine your design to make your implementation easier to use.
     allow the user to make more changes and see their tasks.
   - **Kernel Methods**:
     - `void addTask(Task t)` - adds `t` to `this`
-    - `Task removeTask(String s)` - removes a task named `s` from `this` and
+    - `Task removeTask(String n)` - removes a task named `n` from `this` and
     reports the removed task
-    - `void updateTask(String s)` - changes a charateristic of a task named `s`
+    - `void updateStatus(String n)` - changes the completion status of the task
+    named `n`
+    - `boolean contains(String n)` - reports if `this` holds a task named `n`
+    - `int size()` - reports the number of tasks in `this`
   - **Secondary Methods**:
-    - `void setCategory(String n, String c)` - sets the category of task `n` to `s`
-    - `void getTasks()` - prints the all tasks and their completed status
-    - `void getTasks(String s)` - prints all tasks with category `s`
-    - `void getToDo()` - prints all tasks whose status is incomplete
+    - `Sequence<Task> incompleteTasks()` - returns a `Sequence` containing all
+    tasks with a status of incomplete in `this`
+    - `Sequence<Task> tasksInCategory(String c)` - returns a `Sequence` with all
+    tasks with a category called `c` in `this`
+    - `Sequence<Task> sortByDate` - returns a `Sequence` with every element in
+    `this` sorted with the earliest date at the front and the latest date at the
+    back
+    earliest date
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
@@ -223,12 +230,12 @@ will likely refine your design to make your implementation easier to use.
       - I would create a `Task` class, `this` will be a `Sequence` containing `Task`s
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - I'm not sure
+      - No, this component would not need enums or constants
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - I think I can implement the secondary methods using the kernel methods
-      because I can use `updateTask` for `setCategory` and I can iterate through `this`
-      for the rest.
+      - I can implement the secondary methods using the kernel methods because
+      each of the secondary methods just require traversing through this and
+      finding certain fields for each task
 
 - Component Design #2: `NutritionTracker`
   - **Description**:
