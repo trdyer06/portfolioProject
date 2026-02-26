@@ -249,14 +249,14 @@ will likely refine your design to make your implementation easier to use.
     - `void enterFood(Food f)` - adds `f` to `this`
     - `Food removeFood(String s)` - removes food named `s` from `this` and reports
     the removed food
-    - `void resetDay()` - clears all food for the current day
+    - `void clear()` - clears all food for the current day
+    - `void setCalorieGoal(int g)` - sets the calorie goal to `g`
   - **Secondary Methods**:
     - `int getCaloriesToday()` - reports the calories from logged foods on current day
     - `Food getDailyAverage()` - reports the values of average amounts
     of fat, carbohydrates, protein, and calories in `this`
     - `Food getDailyMedian()` - reports the values of median amounts
     of fat, carbohydrates, protein, and calories in `this`
-    - `void setCalorieGoal(int g)` - sets the calorie goal to `g`
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
@@ -267,12 +267,12 @@ will likely refine your design to make your implementation easier to use.
       - I would create a `Food` class, `this` would be a of `Food`s
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - I'm not sure
+      - No, this component would not need enums or constants
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - I think the secondary methods could be implemented without using the kernel
-      methods or any other methods, since I will either be creating a `Food`
-      to return or just getting stored values.
+      - I could implement the secondary methods with the kernel methods because
+      I could iterate through this and find sums, medians, or means of the
+      values in the `Food`s
 
 - Component Design #3: `BudgetManager`
 
@@ -289,12 +289,14 @@ will likely refine your design to make your implementation easier to use.
     `v` to `this`
     - `Map.Pair<String, Double> removeTransaction(String s)` - removes a transaction
     named `s` from `this` and reports the name and value of the transaction
+    - `void setSavingGoal(double s)` - sets the amount that the client wants to
+    save
+    - `double getSavingGoal()` - reports the saving goal of `this`
   - **Secondary Methods**:
     - `double getSpendingBudget()` - reports the amount that can be spent after
     income, expenses, and saving
-    - `void setSavingGoal(double s)` - sets the amount that the client wants to
-    save
     - `double getMonthlySpending()` - reports the total of all expenses in `this`
+    - `double getMonthlyIncome()` - reports the total of all income in `this`
     - `double getMonthlyNetIncome()` - reports the amount of money after expenses
     are subtracted from income
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
@@ -304,15 +306,14 @@ will likely refine your design to make your implementation easier to use.
       the income or expenses throughout time
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - I'm not sure
+      - I could possibly use a `Transaction` class instead of `Map.Pair`
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - I'm not sure
+      - No, this component would not need enums or constants
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - I think the secondary methods can be implemented without using the kernel
-      methods or other methods, since I will either be returning a value already
-      in `this` or setting a value
+      - The secondary methods can be implemented using the kernel methods because
+      the secondary methods require iteration and getting sums of values in `this`
 
 ## Post-Assignment
 
