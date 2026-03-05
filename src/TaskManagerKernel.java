@@ -1,5 +1,8 @@
 import components.standard.Standard;
 
+/**
+ * Task manager kernel component with primary methods.
+ */
 public interface TaskManagerKernel extends Standard<TaskManager> {
 
     /**
