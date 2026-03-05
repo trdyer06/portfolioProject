@@ -1,3 +1,6 @@
+/**
+ * {@code TaskManagerKernel} enhanced with secondary methods.
+ */
 public interface TaskManager extends TaskManagerKernel {
 
     /**
