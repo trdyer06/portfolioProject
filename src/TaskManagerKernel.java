@@ -6,10 +6,12 @@ import components.standard.Standard;
 public interface TaskManagerKernel extends Standard<TaskManager> {
 
     /**
-     * Adds {@code T} to {@code this}.
+     * Adds {@code t} to {@code this}.
      *
      * @param t
-     *            the name of the {@code Task} to be added
+     *            the name of the Task to be added
+     * @requires t is not in this
+     * @ensures this = #this * <t>
      */
     void addTask(Task t);
 
@@ -20,6 +22,9 @@ public interface TaskManagerKernel extends Standard<TaskManager> {
      * @param n
      *            the name of the {@code Task} to be removed
      * @return the {@code Task} that was removed
+     * @requires t is in this
+     * @ensures removeTask = the Task with name n and this = #this \ task named
+     *          n
      */
     Task removeTask(String n);
 
@@ -45,6 +50,7 @@ public interface TaskManagerKernel extends Standard<TaskManager> {
      * Reports the number of {@code Task}s in {@code this}.
      *
      * @return the number of {@code Task}s in {@code this}
+     * @ensures size = |this|
      */
     int size();
 }
