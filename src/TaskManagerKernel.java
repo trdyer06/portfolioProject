@@ -9,7 +9,8 @@ public interface TaskManagerKernel extends Standard<TaskManager> {
      * Adds {@code t} to {@code this}.
      *
      * @param t
-     *            the name of the Task to be added
+     *            the Task to be added
+     * @updates this
      * @requires t is not in this
      * @ensures this = #this * <t>
      */
@@ -22,6 +23,7 @@ public interface TaskManagerKernel extends Standard<TaskManager> {
      * @param n
      *            the name of the {@code Task} to be removed
      * @return the {@code Task} that was removed
+     * @updates this
      * @requires a Task with name n is in this
      * @ensures removeTask = the Task with name n and this = #this \ task named
      *          n
@@ -32,8 +34,9 @@ public interface TaskManagerKernel extends Standard<TaskManager> {
      * Removes an arbitrary {@code Task} from {@code this}.
      *
      * @return the {@code Task} that was removed
+     * @updates this
      * @requires |this| > 0
-     * @ensures removeAny = a Task in #this and this = #this * removeAny
+     * @ensures removeAny = a Task in #this and this = #this \ removeAny
      */
     Task removeAny();
 
@@ -43,6 +46,7 @@ public interface TaskManagerKernel extends Standard<TaskManager> {
      * @param n
      *
      *            the name of the {@code Task} to be updated
+     * @updates this
      * @requires a Task with name n is in this
      * @ensures if the Task named n was incomplete it will be complete and if
      *          the Task named n was complete it will be incomplete
@@ -55,7 +59,6 @@ public interface TaskManagerKernel extends Standard<TaskManager> {
      * @param n
      *            the name of the {@code Task} to be searched for
      * @return true if a {@code Task} named {@code n} is in {@code this}
-     * @requires |this| > 0
      * @ensures contains = whether a Task named n is in this
      */
     boolean contains(String n);
