@@ -1,7 +1,10 @@
+/**
+ * Represents a Task with a name, deadline date, category, and completion
+ * status.
+ */
 public class Task {
-
     /**
-     * The name of this Task,
+     * The name of this Task.
      */
     private String name;
 
@@ -18,7 +21,7 @@ public class Task {
     /**
      * This completion status of this Task.
      */
-    private String status;
+    private boolean status;
 
     /**
      * No-argument constructor.
@@ -27,7 +30,7 @@ public class Task {
         this.name = "Task";
         this.date = "01/01/26";
         this.category = "category";
-        this.status = "incomplete";
+        this.status = false;
     }
 
     /**
@@ -40,7 +43,7 @@ public class Task {
         this.name = n;
         this.date = "01/01/26";
         this.category = "category";
-        this.status = "incomplete";
+        this.status = false;
     }
 
     /**
@@ -55,7 +58,7 @@ public class Task {
         this.name = n;
         this.setDate(d);
         this.category = "category";
-        this.status = "incomplete";
+        this.status = false;
     }
 
     /**
@@ -72,7 +75,7 @@ public class Task {
         this.name = n;
         this.setDate(d);
         this.category = c;
-        this.status = "incomplete";
+        this.status = false;
     }
 
     /**
@@ -87,7 +90,7 @@ public class Task {
      * @param s
      *            String assigned to status
      */
-    public Task(String n, String d, String c, String s) {
+    public Task(String n, String d, String c, boolean s) {
         this.name = n;
         this.setDate(d);
         this.category = c;
@@ -127,11 +130,14 @@ public class Task {
         this.category = c;
     }
 
-    public void setStatus(String s) {
-        if (s.equals("complete") || s.equals("in progress")
-                || s.equals("incomplete")) {
-            this.status = s;
-        }
+    /**
+     * Sets the status of this to s.
+     *
+     * @param s
+     *            the boolean assigned to status
+     */
+    public void setStatus(boolean s) {
+        this.status = s;
     }
 
     /**
@@ -161,9 +167,25 @@ public class Task {
         return this.category;
     }
 
+    /**
+     * Reports whether this is complete or incomplete.
+     *
+     * @return the status of this
+     */
+    public boolean getStatus() {
+        return this.status;
+    }
+
     @Override
-    public String toString() {
-        return this.name + ", " + this.date + ", " + this.category + ", "
-                + this.status;
+    public final String toString() {
+        String toString = "";
+        if (this.status) {
+            toString = this.name + ", " + this.date + ", " + this.category
+                    + ", complete";
+        } else {
+            toString = this.name + ", " + this.date + ", " + this.category
+                    + ", incomplete";
+        }
+        return toString;
     }
 }

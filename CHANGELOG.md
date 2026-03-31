@@ -41,3 +41,18 @@ setters and getters
 
 - Changed the component designs to follow OSU discipline
 - Changed answers to questions about enums and secondary method implementation
+## 2026.03.05
+
+### Added
+
+- Implemented kernel and enhanced interfaces for TaskManager component
+
+## 2026.03.31
+
+### Added
+
+- Added removeAny to the kernel
+
+### Updated
+
+- Added requires and ensures claueses where necessary in method contracts
