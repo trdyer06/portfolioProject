@@ -135,10 +135,13 @@ public class TaskManagerConcept implements Iterable<Task> {
                     task.setCategory(category);
                 }
                 out.print(
-                        "Enter task completion status(incomplete, in progress, complete): ");
+                        "Enter task completion status(incomplete, complete): ");
                 status = in.nextLine();
-                if (!status.equals("")) {
-                    task.setStatus(status);
+                if (status.equals("incomplete")) {
+                    task.setStatus(false);
+                }
+                if (status.equals("complete")) {
+                    task.setStatus(true);
                 }
                 manager.addTask(task);
             } else if (input.equals("r")) {
