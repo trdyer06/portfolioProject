@@ -22,11 +22,20 @@ public interface TaskManagerKernel extends Standard<TaskManager> {
      * @param n
      *            the name of the {@code Task} to be removed
      * @return the {@code Task} that was removed
-     * @requires t is in this
+     * @requires a Task with name n is in this
      * @ensures removeTask = the Task with name n and this = #this \ task named
      *          n
      */
     Task removeTask(String n);
+
+    /**
+     * Removes an arbitrary {@code Task} from {@code this}.
+     *
+     * @return the {@code Task} that was removed
+     * @requires |this| > 0
+     * @ensures removeAny = a Task in #this and this = #this * removeAny
+     */
+    Task removeAny();
 
     /**
      * Updates the completion status of the {@code Task} named {@code n}.
@@ -34,6 +43,9 @@ public interface TaskManagerKernel extends Standard<TaskManager> {
      * @param n
      *
      *            the name of the {@code Task} to be updated
+     * @requires a Task with name n is in this
+     * @ensures if the Task named n was incomplete it will be complete and if
+     *          the Task named n was complete it will be incomplete
      */
     void updateStatus(String n);
 
@@ -43,6 +55,8 @@ public interface TaskManagerKernel extends Standard<TaskManager> {
      * @param n
      *            the name of the {@code Task} to be searched for
      * @return true if a {@code Task} named {@code n} is in {@code this}
+     * @requires |this| > 0
+     * @ensures contains = whether a Task named n is in this
      */
     boolean contains(String n);
 
