@@ -18,3 +18,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Implemented kernel and enhanced interfaces for TaskManager component
+
+## 2026.03.31
+
+### Added
+
+- Added removeAny to the kernel
+
+### Updated
+
+- Added requires and ensures claueses where necessary in method contracts
