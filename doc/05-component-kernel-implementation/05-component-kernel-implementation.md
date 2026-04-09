@@ -1,8 +1,8 @@
 # Portfolio Part 5: Kernel Implementation
 
-- **Name**: <!-- TODO: fill with first and last name (e.g., Brutus Buckeye) and delete this comment -->
-- **Dot Number**: <!-- TODO: fill with OSU dot number (e.g., buckeye.17) and delete this comment -->
-- **Due Date**: <!-- TODO: fill out with due date and time (e.g., 10/17 @ 3:10 PM EST) and delete this comment -->
+- **Name**: Thomas Dyer
+- **Dot Number**: dyer.449
+- **Due Date**: 4/15 @ 1:50 PM
 
 ## Assignment Overview
 
@@ -120,7 +120,10 @@ Below is further rationale/explanation for the rubric items above:
 > discuss how that representation will be restricted (i.e., by convention)
 > and interpreted (i.e., by correspondence).
 
-<!-- TODO: select a representation and explain why -->
+For the first implementation I will be using a Sequence<Task> because it has order
+and can be iterated easily. A restriction will be that Sequences allow duplicates
+and my TaskManager does not allow duplicate names. The TaskManager and Sequence
+can be interpreted very similarly.
 
 > To start making your kernel implementation, make a branch off of main in your
 > new repo called something like `kernel-implementation`. There are many ways to
@@ -141,8 +144,6 @@ Below is further rationale/explanation for the rubric items above:
 > to see them. If you don't like this workflow, you may try following the
 > rebase strategies described [here](https://stackoverflow.com/questions/35790561/working-while-waiting-for-pending-pr)
 > and [here](https://stackoverflow.com/questions/18021888/continue-working-on-a-git-branch-after-making-a-pull-request).
-
-<!-- TODO: make a new branch from main then delete this comment -->
 
 ## Assignment Tasks
 
