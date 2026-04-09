@@ -52,10 +52,17 @@ setters and getters
 
 ### Added
 
-- Added removeAny to the kernel
 - Created the abstract class
-- implemented the secondary methods
+- Implemented the secondary methods
 
 ### Updated
 
+- Added removeAny to the kernel
 - Added requires and ensures claueses where necessary in method contracts
+
+## 2026.04.8
+
+### Added
+
+- Created TaskManagerOnSequence class
+- Implemented the Kernel methods using a Sequence<Task>
