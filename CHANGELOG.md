@@ -41,6 +41,7 @@ setters and getters
 
 - Changed the component designs to follow OSU discipline
 - Changed answers to questions about enums and secondary method implementation
+
 ## 2026.03.05
 
 ### Added
@@ -52,6 +53,8 @@ setters and getters
 ### Added
 
 - Added removeAny to the kernel
+- Created the abstract class
+- implemented the secondary methods
 
 ### Updated
 
