@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 import components.sequence.Sequence1L;
 
 /**
@@ -114,5 +116,17 @@ public class TaskManagerOnSequence extends TaskManagerSecondary {
     @Override
     public final int size() {
         return this.rep.length();
+    }
+
+    /*
+     * Iterator ----------------------------------------------------------------
+     */
+
+    /**
+     * Implementation of Iterator interface for TaskManagerOnSequence
+     */
+    private final class TaskManagerOnSequenceIterator
+            implements Iterator<Task> {
+
     }
 }
