@@ -1,4 +1,5 @@
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import components.sequence.Sequence1L;
 
@@ -122,11 +123,47 @@ public class TaskManagerOnSequence extends TaskManagerSecondary {
      * Iterator ----------------------------------------------------------------
      */
 
+    @Override
+    public final Iterator<Task> iterator() {
+        return new TaskManagerOnSequenceIterator();
+    }
+
     /**
-     * Implementation of Iterator interface for TaskManagerOnSequence
+     * Implementation of Iterator interface for TaskManagerOnSequence.
      */
     private final class TaskManagerOnSequenceIterator
             implements Iterator<Task> {
+        /**
+         * Number of Tasks seen.
+         */
+        private int position;
 
+        /**
+         * No-argument constructor.
+         */
+        TaskManagerOnSequenceIterator() {
+            this.position = 0;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return this.position < TaskManagerOnSequence.this.rep.length();
+        }
+
+        @Override
+        public Task next() {
+            if (!this.hasNext()) {
+                throw new NoSuchElementException();
+            }
+            Task t = TaskManagerOnSequence.this.rep.entry(this.position);
+            this.position++;
+            return t;
+        }
+
+        @Override
+        public void remove() {
+            throw new UnsupportedOperationException(
+                    "remove operation not supported");
+        }
     }
 }
