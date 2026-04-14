@@ -66,3 +66,9 @@ setters and getters
 
 - Created TaskManagerOnSequence class
 - Implemented the Kernel methods using a Sequence<Task>
+
+## 2026.04.14
+
+### Updated
+
+- Implemented common methods in TaskManagerSecondary
