@@ -72,3 +72,5 @@ setters and getters
 ### Updated
 
 - Implemented common methods in TaskManagerSecondary
+- Implemented common methods in Task
+- Implemented iterator for TaskManagerOnSequence
