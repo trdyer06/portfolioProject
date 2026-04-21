@@ -176,6 +176,47 @@ public class Task {
         return this.status;
     }
 
+    /*
+     * Common methods ----------------------------------------------------------
+     */
+
+    @Override
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof Task)) {
+            return false;
+        }
+        Task t = (Task) obj;
+        if (!(this.name.equals(t.name))) {
+            return false;
+        }
+        if (!(this.date.equals(t.date))) {
+            return false;
+        }
+        if (!(this.category.equals(t.category))) {
+            return false;
+        }
+        if (!(this.status == t.status)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public final int hashCode() {
+        final int prime = 17;
+        int result = 1;
+        result = prime * result + this.name.hashCode();
+        result = prime * result + this.date.hashCode();
+        result = prime * result + this.category.hashCode();
+        return result;
+    }
+
     @Override
     public final String toString() {
         String toString = "";

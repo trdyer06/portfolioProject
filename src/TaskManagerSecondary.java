@@ -1,7 +1,13 @@
+import java.util.Iterator;
+
 /**
  * Layered implementations of secondary methods for {@code TaskManager}.
  */
 public abstract class TaskManagerSecondary implements TaskManager {
+
+    /*
+     * Secondary methods -------------------------------------------------------
+     */
 
     /**
      * Creates a {@code TaskManager} of {@code Task}s from {@code this} which
@@ -90,6 +96,62 @@ public abstract class TaskManagerSecondary implements TaskManager {
             }
             result.addTask(earliest);
         }
+        return result;
+    }
+
+    /*
+     * Common methods ----------------------------------------------------------
+     */
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof TaskManager)) {
+            return false;
+        }
+        TaskManager t = (TaskManager) obj;
+        if (this.size() != t.size()) {
+            return false;
+        }
+        Iterator<Task> it1 = this.iterator();
+        Iterator<Task> it2 = t.iterator();
+        while (it1.hasNext()) {
+            Task x1 = it1.next();
+            Object x2 = it2.next();
+            if (!x1.equals(x2)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 17;
+        int result = 1;
+        for (Task t : this) {
+            result = prime * result + t.hashCode();
+        }
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        String result = "<";
+        boolean first = true;
+        for (Task t : this) {
+            if (!first) {
+                result += ", ";
+            }
+            result += t.toString();
+            first = false;
+        }
+        result += ">";
         return result;
     }
 }
