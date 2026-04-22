@@ -3,6 +3,10 @@
  */
 public class TaskManagerOnSequenceTest extends TaskManagerTest {
 
+    /*
+     * Kernel method tests -----------------------------------------------------
+     */
+
     @Override
     protected final TaskManager constructorTest() {
         TaskManager tm = new TaskManagerOnSequence();
@@ -450,6 +454,310 @@ public class TaskManagerOnSequenceTest extends TaskManagerTest {
          */
         assertEquals(size, 2);
         assertEquals(tm, expectedTm);
+    }
+
+    /*
+     * Secondary method tests --------------------------------------------------
+     */
+
+    /**
+     * Tests incompleteTasks with an empty TaskManager.
+     */
+    @Test
+    public void incompleteTasksTest1() {
+        /*
+         * create TaskManagers to compare
+         */
+        TaskManager tm = this.constructorTest();
+        TaskManager expectedResult = this.constructorTest();
+        /*
+         * call incompleteTasks
+         */
+        TaskManager result = tm.incompleteTasks();
+        /*
+         * assert the result mathces the expected result
+         */
+        assertEquals(result, expectedResult);
+    }
+
+    /**
+     * Tests incompleteTasks with a TaskManager with 1 incomplete Task.
+     */
+    @Test
+    public void incompleteTasksTest2() {
+        /*
+         * create TaskManagers to compare
+         */
+        TaskManager tm = this.constructorTest();
+        TaskManager expectedResult = this.constructorTest();
+        /*
+         * create Task to add
+         */
+        Task t1 = new Task("task 1", "01/01/2026", "school", false);
+        /*
+         * add the Task
+         */
+        tm.addTask(t1);
+        expectedResult.addTask(t1);
+        /*
+         * call incompleteTasks
+         */
+        TaskManager result = tm.incompleteTasks();
+        /*
+         * assert the result mathces the expected result
+         */
+        assertEquals(result, expectedResult);
+    }
+
+    /**
+     * Tests incompleteTasks with a TaskManager with 1 complete Task.
+     */
+    @Test
+    public void incompleteTasksTest3() {
+        /*
+         * create TaskManagers to compare
+         */
+        TaskManager tm = this.constructorTest();
+        TaskManager expectedResult = this.constructorTest();
+        /*
+         * create Task to add
+         */
+        Task t1 = new Task("task 1", "01/01/2026", "school", true);
+        /*
+         * add the Task
+         */
+        tm.addTask(t1);
+        /*
+         * call incompleteTasks
+         */
+        TaskManager result = tm.incompleteTasks();
+        /*
+         * assert the result mathces the expected result
+         */
+        assertEquals(result, expectedResult);
+    }
+
+    /**
+     * Tests incompleteTasks with a TaskManager with 1 incomplete Task and 1
+     * complete Task.
+     */
+    @Test
+    public void incompleteTasksTest4() {
+        /*
+         * create TaskManagers to compare
+         */
+        TaskManager tm = this.constructorTest();
+        TaskManager expectedResult = this.constructorTest();
+        /*
+         * create Tasks to add
+         */
+        Task t1 = new Task("task 1", "01/01/2026", "school", false);
+        Task t2 = new Task("task 2", "01/31/2026", "school", true);
+        /*
+         * add the Tasks
+         */
+        tm.addTask(t1);
+        tm.addTask(t2);
+        expectedResult.addTask(t1);
+        /*
+         * call incompleteTasks
+         */
+        TaskManager result = tm.incompleteTasks();
+        /*
+         * assert the result mathces the expected result
+         */
+        assertEquals(result, expectedResult);
+    }
+
+    /**
+     * Test tasksInCategory with an empty TaskManager.
+     */
+    @Test
+    public void tasksInCategoryTest1() {
+        /*
+         * create TaskManagers to compare
+         */
+        TaskManager tm = this.constructorTest();
+        TaskManager expectedResult = this.constructorTest();
+        /*
+         * call tasksInCategory
+         */
+        TaskManager result = tm.tasksInCategory("work");
+        /*
+         * assert the result mathces the expected result
+         */
+        assertEquals(result, expectedResult);
+    }
+
+    /**
+     * Test tasksInCategory with a non-empty TaskManager with no Tasks in the
+     * category.
+     */
+    @Test
+    public void tasksInCategoryTest2() {
+        /*
+         * create TaskManagers to compare
+         */
+        TaskManager tm = this.constructorTest();
+        TaskManager expectedResult = this.constructorTest();
+        /*
+         * create Task to add
+         */
+        Task t1 = new Task("task 1", "01/01/2026", "school", false);
+        /*
+         * add the Task
+         */
+        tm.addTask(t1);
+        /*
+         * call tasksInCategory
+         */
+        TaskManager result = tm.tasksInCategory("work");
+        /*
+         * assert the result mathces the expected result
+         */
+        assertEquals(result, expectedResult);
+    }
+
+    /**
+     * Test tasksInCategory with a TaskManager with 1 Task in the category.
+     */
+    @Test
+    public void tasksInCategoryTest3() {
+        /*
+         * create TaskManagers to compare
+         */
+        TaskManager tm = this.constructorTest();
+        TaskManager expectedResult = this.constructorTest();
+        /*
+         * create Task to add
+         */
+        Task t1 = new Task("task 1", "01/01/2026", "school", false);
+        /*
+         * add the Task
+         */
+        tm.addTask(t1);
+        expectedResult.addTask(t1);
+        /*
+         * call tasksInCategory
+         */
+        TaskManager result = tm.tasksInCategory("school");
+        /*
+         * assert the result mathces the expected result
+         */
+        assertEquals(result, expectedResult);
+    }
+
+    /**
+     * Test tasksInCategory with a TaskManager with 1 Task in the category and 1
+     * Task not in the category.
+     */
+    @Test
+    public void tasksInCategoryTest4() {
+        /*
+         * create TaskManagers to compare
+         */
+        TaskManager tm = this.constructorTest();
+        TaskManager expectedResult = this.constructorTest();
+        /*
+         * create Tasks to add
+         */
+        Task t1 = new Task("task 1", "01/01/2026", "school", false);
+        Task t2 = new Task("task 2", "01/31/2026", "work", true);
+        /*
+         * add the Task
+         */
+        tm.addTask(t1);
+        tm.addTask(t2);
+        expectedResult.addTask(t1);
+        /*
+         * call tasksInCategory
+         */
+        TaskManager result = tm.tasksInCategory("school");
+        /*
+         * assert the result mathces the expected result
+         */
+        assertEquals(result, expectedResult);
+    }
+
+    /**
+     * Test tasksByDate with an empty TaskManager.
+     */
+    @Test
+    public void tasksByDateTest1() {
+        /*
+         * create TaskManagers to compare
+         */
+        TaskManager tm = this.constructorTest();
+        TaskManager expectedResult = this.constructorTest();
+        /*
+         * call tasksByDate
+         */
+        TaskManager result = tm.tasksByDate();
+        /*
+         * assert the result mathces the expected result
+         */
+        assertEquals(result, expectedResult);
+    }
+
+    /**
+     * Test tasksByDate with a TaskManager with 1 Task.
+     */
+    @Test
+    public void tasksByDateTest2() {
+        /*
+         * create TaskManagers to compare
+         */
+        TaskManager tm = this.constructorTest();
+        TaskManager expectedResult = this.constructorTest();
+        /*
+         * create Task to add
+         */
+        Task t1 = new Task("task 1", "01/01/2026", "school", false);
+        /*
+         * add the Task
+         */
+        tm.addTask(t1);
+        expectedResult.addTask(t1);
+        /*
+         * call tasksByDate
+         */
+        TaskManager result = tm.tasksByDate();
+        /*
+         * assert the result mathces the expected result
+         */
+        assertEquals(result, expectedResult);
+    }
+
+    /**
+     * Test tasksByDate with a TaskManager with 2 Tasks.
+     */
+    @Test
+    public void tasksByDateTest3() {
+        /*
+         * create TaskManagers to compare
+         */
+        TaskManager tm = this.constructorTest();
+        TaskManager expectedResult = this.constructorTest();
+        /*
+         * create Tasks to add
+         */
+        Task t1 = new Task("task 1", "01/01/2026", "school", false);
+        Task t2 = new Task("task 2", "01/31/2026", "work", true);
+        /*
+         * add the Task
+         */
+        tm.addTask(t1);
+        tm.addTask(t2);
+        expectedResult.addTask(t1);
+        expectedResult.addTask(t2);
+        /*
+         * call tasksByDate
+         */
+        TaskManager result = tm.tasksByDate();
+        /*
+         * assert the result mathces the expected result
+         */
+        assertEquals(result, expectedResult);
     }
 
 }
