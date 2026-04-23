@@ -1,11 +1,11 @@
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
 /**
  * JUnit test fixture for TaskManagerOnSequence.
  */
 public class TaskManagerOnSequenceTest extends TaskManagerTest {
-
-    /*
-     * Kernel method tests -----------------------------------------------------
-     */
 
     @Override
     protected final TaskManager constructorTest() {
@@ -29,6 +29,10 @@ public class TaskManagerOnSequenceTest extends TaskManagerTest {
         assertEquals(tm.size(), 0);
         assertEquals(tm, expectedTm);
     }
+
+    /*
+     * Kernel method tests -----------------------------------------------------
+     */
 
     /**
      * Test addTask with an empty TaskManager adding 1 Task.
@@ -60,7 +64,7 @@ public class TaskManagerOnSequenceTest extends TaskManagerTest {
      * Test addTask with an empty TaskManager adding 2 Tasks.
      */
     @Test
-    public void addTaskTest2(){
+    public void addTaskTest2() {
         /*
          * create TaskManagers to compare
          */
@@ -82,7 +86,7 @@ public class TaskManagerOnSequenceTest extends TaskManagerTest {
          * assert the Tasks were added to the TaskManager
          */
         assertEquals(tm.size(), 2);
-        assertEquals(tm, expectedTm)
+        assertEquals(tm, expectedTm);
     }
 
     /**
@@ -277,8 +281,8 @@ public class TaskManagerOnSequenceTest extends TaskManagerTest {
          */
         tm.addTask(t1);
         tm.addTask(t2);
-        expectedTm.addTask(t2);
         expectedTm.addTask(expectedTask);
+        expectedTm.addTask(t2);
         /*
          * update the Task
          */
@@ -444,7 +448,9 @@ public class TaskManagerOnSequenceTest extends TaskManagerTest {
          * add the Tasks
          */
         tm.addTask(t1);
+        tm.addTask(t2);
         expectedTm.addTask(t1);
+        expectedTm.addTask(t2);
         /*
          * call size
          */
