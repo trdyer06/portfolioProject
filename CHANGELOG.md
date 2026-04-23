@@ -81,3 +81,9 @@ setters and getters
 
 - Wrote JUnit tests for the kernel and secondary methods for TaskManagerOnSequence
 - Created a use case of a daily planner
+
+## 2026.04.23
+
+### Added
+
+- Created a use case of a school course work organizer
