@@ -21,7 +21,9 @@
     ],
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
-        "lib/**/*.jar"
+        "lib/**/*.jar",
+        "c:\\Users\\trdye\\OneDrive\\Documents\\software-2-monorepo\\lib\\junit-4.13.2.jar",
+        "c:\\Users\\trdye\\OneDrive\\Documents\\software-2-monorepo\\lib\\hamcrest-core-1.3.jar"
     ],
     "java.saveActions.cleanup": true,
     "java.cleanup.actions": [
