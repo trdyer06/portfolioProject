@@ -74,3 +74,10 @@ setters and getters
 - Implemented common methods in TaskManagerSecondary
 - Implemented common methods in Task
 - Implemented iterator for TaskManagerOnSequence
+
+## 2026.04.22
+
+### Added
+
+- Wrote JUnit tests for the kernel and secondary methods for TaskManagerOnSequence
+- Created a use case of a daily planner
